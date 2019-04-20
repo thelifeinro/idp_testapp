@@ -27,7 +27,7 @@ def hello():
     if request.method == 'POST':
         redis = get_redis()
         nume = request.form['nume']
-		grupa = request.form['grupa']
+	grupa = request.form['grupa']
         data = json.dumps({'voter_id': voter_id, 'nume': nume, 'grupa':grupa})
         redis.rpush('entries', data)
 
