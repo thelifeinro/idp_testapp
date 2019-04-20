@@ -4,6 +4,7 @@ import os
 import socket
 import random
 import json
+import logging
 
 option_a = os.getenv('OPTION_A', "Cats")
 option_b = os.getenv('OPTION_B', "Dogs")
@@ -28,6 +29,7 @@ def hello():
         redis = get_redis()
         nume = request.form['nume']
         grupa = request.form['grupa']
+        logging.error('Nume:' + nume + ' Grupa:' + grupa)
         data = json.dumps({'voter_id': voter_id, 'nume': nume, 'grupa':grupa})
         redis.rpush('entries', data)
 
