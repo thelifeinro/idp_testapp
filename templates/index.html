@@ -1,27 +1,44 @@
+<!DOCTYPE html>
 <html>
- <head>
- <style type="text/css">
- body {
- background: black;
- color: white;
- }
- div.container {
- max-width: 500px;
- margin: 100px auto;
- border: 20px solid white;
- padding: 10px;
- text-align: center;
- }
- h4 {
- text-transform: uppercase;
-  }
- </style>
- </head>
- <body>
- <div class="container">
- <h4>Cloud image of the day  from {{hostname}}</h4>
+  <head>
+    <meta charset="utf-8">
+    <title>Homework generator</title>
+    <base href="/index.html">
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <meta name="keywords" content="docker-compose, docker, stack">
+    <meta name="author" content="Tutum dev team">
+    <link rel='stylesheet' href="{{ url_for('static',filename='stylesheets/style.css') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div id="content-container">
+      <div id="content-container-center">
+        <h3>Adauga datele tale in formularul de mai jos:</h3>
+        <form id="choice" name='form' method="POST" action="/">
+          <input id='nume' type='text' name='nume' placeholder='Numele'>
+          <input id='grupa' type='text' name='grupa' placeholder='Grupa'>
+          <button id="a" type="submit" name="send" class="a" value="a">Trimite</button>
+        </form>
+        <div id="tip">
+          (You can only enter once)
+        </div>
+        <div id="hostname">
+          Processed by container ID {{hostname}}
+        </div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
- <img src="{{url}}" />
- </div>
- </body>
+    {% if nume %}
+    <script>
+      var nume = "{{nume}}";
+
+      if(nume != ""){
+        $(".a").prop('disabled', true);
+        $(".tip").html('Tema ta a fost generata, {{nume}} <i class="fa fa-check-circle"></i>');
+      }
+    </script>
+    {% endif %}
+  </body>
 </html>
