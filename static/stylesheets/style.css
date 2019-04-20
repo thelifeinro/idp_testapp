@@ -30,6 +30,9 @@ button i{
 button.a{
   background-color: #1aaaf8;
 }
+button.a:disabled{
+  background-color: #d3d3d3;
+}
 
 button.b{
   background-color: #00cbca;
